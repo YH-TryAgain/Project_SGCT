@@ -1,0 +1,197 @@
+{
+  "experiment_name": "formal_experiment10_algorithm_comparison",
+  "saved_at_utc": "2026-06-01T03:38:46.033232+00:00",
+  "results_base_dir": "results_paper_final",
+  "varying_param_key": "scenario_point",
+  "varying_param_values": null,
+  "varying_params": [
+    {
+      "key": "scenario_label",
+      "target": "scenario",
+      "values": [
+        "random",
+        "prefixed",
+        "prefix64",
+        "prefix72",
+        "prefix80",
+        "dispersed",
+        "sequential",
+        "clustered"
+      ]
+    }
+  ],
+  "scenario_config": {
+    "TOTAL_TAGS": 10000,
+    "BINARY_LENGTH": 96
+  },
+  "algorithm_specific_config": {
+    "ber": 0.0,
+    "enable_refined_energy_model": true,
+    "enable_resource_monitoring": true
+  },
+  "algorithms": [
+    "DQTA(k_max=3)",
+    "DRCT",
+    "EAQ_CBB",
+    "EMDT",
+    "HT_EEAC",
+    "LAPCT",
+    "NLHQT(n=2)",
+    "SGCT"
+  ],
+  "algorithm_configs": {
+    "DQTA(k_max=3)": {
+      "class": "DQTAAlgorithm",
+      "config": {
+        "k_max": 3
+      },
+      "year": 19
+    },
+    "DRCT": {
+      "class": "DRCTFinalAlgorithm",
+      "config": {
+        "check_bits": 4,
+        "answer_bits": 2,
+        "check_mode": "random",
+        "paper_timing": false,
+        "include_reader_cmd_base_bits": true
+      },
+      "year": 25
+    },
+    "EAQ_CBB": {
+      "class": "EAQCBBAlgorithm",
+      "config": {},
+      "year": 23
+    },
+    "EMDT": {
+      "class": "EMDTAlgorithm",
+      "config": {},
+      "year": 24
+    },
+    "HT_EEAC": {
+      "class": "HT_EEAC",
+      "config": {},
+      "year": 24
+    },
+    "LAPCT": {
+      "class": "LAPCTAlgorithm",
+      "config": {
+        "k_threshold_divisor": 3.0
+      },
+      "year": 24
+    },
+    "NLHQT(n=2)": {
+      "class": "NLHQTAlgorithm",
+      "config": {
+        "n_way": 2
+      },
+      "year": 23
+    },
+    "SGCT": {
+      "class": "OCGHLCTPBAlgorithm",
+      "config": {
+        "probe_chunk_bits": 16,
+        "d_target_dense": 8,
+        "d_target_normal": 6,
+        "d_target_skew": 4,
+        "signature_d_min": 4,
+        "signature_d_max": 8,
+        "signature_slot_cap": 256,
+        "signature_marker_bits": 1,
+        "terminal_group_size": 1,
+        "enable_suffix_terminal_verify": true,
+        "enable_signature_grouping": true,
+        "enable_low_d_fallback": true,
+        "enable_local_short_id": true,
+        "local_short_id_min_bits": 8,
+        "enable_hash_short_id": false,
+        "hash_short_id_bits": 8,
+        "hash_short_id_max_bits": 16,
+        "enable_suffix_signature": true,
+        "enable_adaptive_suffix_signature": true,
+        "suffix_signature_root_only": true,
+        "suffix_signature_min_prefix_bits": 64,
+        "suffix_signature_max_remaining_bits": 32,
+        "suffix_signature_d_max": 12,
+        "suffix_signature_slot_cap": 4096,
+        "suffix_signature_min_tags_per_slot": 8.0,
+        "suffix_signature_max_non_idle_ratio": 0.35,
+        "suffix_signature_sequential_non_idle_ratio": 0.65,
+        "suffix_signature_cost_margin": 1.2,
+        "max_suffix_signature_trials_per_node": 1,
+        "enable_small_cluster_guard": false,
+        "small_cluster_guard_max_tags": 128,
+        "small_cluster_guard_prefix_bits": 64
+      },
+      "year": 26
+    }
+  },
+  "scenarios": [
+    {
+      "field": "scenario_point",
+      "values": [
+        "scenario_label=clustered",
+        "scenario_label=dispersed",
+        "scenario_label=prefix64",
+        "scenario_label=prefix72",
+        "scenario_label=prefix80",
+        "scenario_label=prefixed",
+        "scenario_label=random",
+        "scenario_label=sequential"
+      ]
+    },
+    {
+      "field": "scenario_label",
+      "values": [
+        "clustered",
+        "dispersed",
+        "prefix64",
+        "prefix72",
+        "prefix80",
+        "prefixed",
+        "random",
+        "sequential"
+      ]
+    },
+    {
+      "field": "TOTAL_TAGS",
+      "values": [
+        10000
+      ]
+    },
+    {
+      "field": "BINARY_LENGTH",
+      "values": [
+        96
+      ]
+    },
+    {
+      "field": "id_distribution",
+      "values": [
+        "clustered",
+        "dispersed",
+        "prefixed",
+        "random",
+        "sequential"
+      ]
+    },
+    {
+      "field": "prefix_length",
+      "values": [
+        48.0,
+        64.0,
+        72.0,
+        80.0
+      ]
+    },
+    {
+      "field": "ber",
+      "values": [
+        0.0
+      ]
+    }
+  ],
+  "runs_per_point": 50,
+  "row_count": 3200,
+  "drct_note": "The formal baseline named DRCT is implemented by DRCTFinalAlgorithm."
+}

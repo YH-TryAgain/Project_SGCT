@@ -1,0 +1,9 @@
+scenario_point,HLCT-Base
+scenario_label=clustered,4296.9600
+scenario_label=dispersed,5490.8000
+scenario_label=prefix64,3779.8400
+scenario_label=prefix72,3776.8000
+scenario_label=prefix80,3222.2000
+scenario_label=prefixed,3776.2000
+scenario_label=random,3870.9800
+scenario_label=sequential,2209.0000

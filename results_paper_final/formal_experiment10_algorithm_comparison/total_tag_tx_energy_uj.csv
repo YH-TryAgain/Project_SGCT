@@ -1,0 +1,9 @@
+scenario_point,DRCT
+scenario_label=clustered,1623.9931
+scenario_label=dispersed,1819.5827
+scenario_label=prefix64,1667.6676
+scenario_label=prefix72,1783.7750
+scenario_label=prefix80,1893.1253
+scenario_label=prefixed,1435.0798
+scenario_label=random,736.6998
+scenario_label=sequential,1920.3070

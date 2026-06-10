@@ -1,0 +1,9 @@
+scenario_point,SGCT
+scenario_label=clustered,0.0000
+scenario_label=dispersed,0.0000
+scenario_label=prefix64,0.0000
+scenario_label=prefix72,0.0000
+scenario_label=prefix80,0.0000
+scenario_label=prefixed,0.0000
+scenario_label=random,0.0000
+scenario_label=sequential,0.0000

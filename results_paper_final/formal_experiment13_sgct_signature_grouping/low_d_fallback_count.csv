@@ -1,0 +1,9 @@
+scenario_point,SGCT,SGCT(d10),SGCT(d4),SGCT(d6),SGCT(d8),SGCT(no_local_short_id),SGCT(no_low_d_fallback),SGCT(no_signature_grouping),SGCT(no_suffix_extension)
+scenario_label=clustered,1.6400,0.8400,1.3000,0.9800,1.4400,1.4400,0.0000,1.4400,1.4400
+scenario_label=dispersed,0.0000,2.4600,1840.6200,1840.6200,0.0000,0.0000,0.0000,0.0000,0.0000
+scenario_label=prefix64,7.2200,3.4400,6.9400,4.7800,7.4600,7.4600,0.0000,7.4600,7.4600
+scenario_label=prefix72,236.6000,39.4800,231.1400,137.3200,238.2600,238.2600,0.0000,238.2600,238.2600
+scenario_label=prefix80,0.0000,2.4200,1837.0200,1837.0200,0.0000,0.0000,0.0000,0.0000,0.0000
+scenario_label=prefixed,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+scenario_label=random,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+scenario_label=sequential,0.0000,0.0000,2496.0000,2496.0000,0.0000,0.0000,0.0000,0.0000,0.0000

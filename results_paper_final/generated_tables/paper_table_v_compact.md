@@ -1,0 +1,12 @@
+| Diagnostic | mean | ci95 | max_p95 | scenario_count |
+| --- | --- | --- | --- | --- |
+| local_short_id_trigger_count | 209.0 | 0.0 | 257.0 | 8 |
+| low_d_fallback_count | 30.6825 | 0.6015032499999999 | 261.65 | 8 |
+| max_signature_d | 8.0 | 0.0 | 8.0 | 8 |
+| progressive_probe_count | 759.0899999999999 | 7.862801375 | 1437.1 | 8 |
+| signature_collision_groups | 730.595 | 3.97605475 | 1433.0 | 8 |
+| signature_grouping_trigger_count | 700.9125 | 3.934893625 | 1432.55 | 8 |
+| signature_groups_pruned | 51641.46 | 58.867815375 | 66495.75 | 8 |
+| signature_singleton_groups | 9938.545 | 1.2029515000000002 | 10000.0 | 8 |
+| sparse_signature_groups | 10669.14 | 4.233443 | 11430.55 | 8 |
+| suffix_signature_trigger_count | 0.0 | 0.0 | 0.0 | 8 |

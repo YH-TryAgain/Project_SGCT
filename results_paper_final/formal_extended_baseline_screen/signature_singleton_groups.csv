@@ -1,0 +1,5 @@
+scenario_point,SGCT
+scenario_label=clustered,9997.0800
+scenario_label=prefix80,10000.0000
+scenario_label=prefixed,10000.0000
+scenario_label=random,10000.0000

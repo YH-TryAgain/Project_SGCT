@@ -1,0 +1,17 @@
+scenario_point,SGCT
+"BINARY_LENGTH=128,scenario_label=clustered",1386.0400
+"BINARY_LENGTH=128,scenario_label=long-prefix",833.7800
+"BINARY_LENGTH=128,scenario_label=medium-prefix",949.2400
+"BINARY_LENGTH=128,scenario_label=random",949.8600
+"BINARY_LENGTH=160,scenario_label=clustered",1388.8600
+"BINARY_LENGTH=160,scenario_label=long-prefix",939.5400
+"BINARY_LENGTH=160,scenario_label=medium-prefix",946.0000
+"BINARY_LENGTH=160,scenario_label=random",947.4400
+"BINARY_LENGTH=64,scenario_label=clustered",137.1600
+"BINARY_LENGTH=64,scenario_label=long-prefix",257.0000
+"BINARY_LENGTH=64,scenario_label=medium-prefix",938.5800
+"BINARY_LENGTH=64,scenario_label=random",943.0800
+"BINARY_LENGTH=96,scenario_label=clustered",1390.0800
+"BINARY_LENGTH=96,scenario_label=long-prefix",308.7000
+"BINARY_LENGTH=96,scenario_label=medium-prefix",951.6800
+"BINARY_LENGTH=96,scenario_label=random",948.2800

@@ -1,0 +1,8 @@
+﻿raw_csv,candidate,baseline,metric,method,n,mean_reduction,ci95_low,ci95_high,ci95_half_width,mean_reduction_pct,ci95_low_pct,ci95_high_pct
+results_paper_final\formal_experiment10_algorithm_comparison\raw_runs.csv,SGCT,DRCT,total_protocol_time_ms,paired_bootstrap_aggregate_mean_reduction,400,0.686375,0.664970,0.705531,0.020280,68.637547,66.497021,70.553068
+results_paper_final\formal_experiment10_algorithm_comparison\raw_runs.csv,SGCT,LAPCT,total_protocol_time_ms,paired_bootstrap_aggregate_mean_reduction,400,0.728100,0.719850,0.736634,0.008392,72.809976,71.984982,73.663434
+results_paper_final\formal_experiment10_algorithm_comparison\raw_runs.csv,SGCT,DQTA(k_max=3),total_protocol_time_ms,paired_bootstrap_aggregate_mean_reduction,400,0.499630,0.484205,0.514573,0.015184,49.963014,48.420491,51.457266
+results_paper_final\formal_experiment10_algorithm_comparison\raw_runs.csv,SGCT,EMDT,total_protocol_time_ms,paired_bootstrap_aggregate_mean_reduction,400,0.411922,0.396414,0.428043,0.015815,41.192172,39.641403,42.804325
+results_paper_final\formal_experiment10_algorithm_comparison\raw_runs.csv,SGCT,NLHQT(n=2),total_protocol_time_ms,paired_bootstrap_aggregate_mean_reduction,400,0.384743,0.369069,0.399733,0.015332,38.474291,36.906896,39.973340
+results_paper_final\formal_experiment10_algorithm_comparison\raw_runs.csv,SGCT,EAQ_CBB,total_protocol_time_ms,paired_bootstrap_aggregate_mean_reduction,400,0.708623,0.698403,0.718899,0.010248,70.862269,69.840304,71.889933
+results_paper_final\formal_experiment10_algorithm_comparison\raw_runs.csv,SGCT,HT_EEAC,total_protocol_time_ms,paired_bootstrap_aggregate_mean_reduction,400,0.898771,0.896052,0.901584,0.002766,89.877081,89.605151,90.158360
