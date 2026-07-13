@@ -1,0 +1,1103 @@
+{
+  "schema_version": 1,
+  "algorithm": "sha256",
+  "immutable_directories": [
+    "results_paper_final/formal_sgct_signature_sensitivity",
+    "results_paper_final/formal_main_scalability_uniform",
+    "results_paper_final/formal_id_length_sweep",
+    "results_paper_final/formal_experiment10_algorithm_comparison",
+    "results_paper_final/formal_experiment13_sgct_signature_grouping"
+  ],
+  "files": [
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/avg_query_efficiency.csv",
+      "bytes": 4412,
+      "sha256": "eb67d92ef2698c8941330fb97b87d943055872f16ff392383415ccb10e6b5b17"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/avg_reader_bits.csv",
+      "bytes": 4459,
+      "sha256": "243db203f29e2935ef528595824a96022c7c07e5f9fd1ea772cfe3fa4a8a351d"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/avg_tag_bits.csv",
+      "bytes": 4479,
+      "sha256": "a2f8413471d4fa1fb4f9ddad7d7b0f9cce6986a7f4602cd94da7babf13379e4a"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/avg_tag_responses.csv",
+      "bytes": 4399,
+      "sha256": "e1951f3419f77a724bedbc8fb21b1f51e49d07dd78cb45b86cf3c0c34e7a79ed"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/avg_total_bits.csv",
+      "bytes": 4507,
+      "sha256": "bef2b904d0b22236d335496daf875b9c6e3801613b84cb2856860a557b76d923"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/collision_slots.csv",
+      "bytes": 4566,
+      "sha256": "8ede74402829d27ce1e8ec4ecdf4fd7eeb51b1a24f454e9105f57186bf1d9ca1"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/formal_sgct_signature_sensitivity_plot.png",
+      "bytes": 3331883,
+      "sha256": "1e00eb6c745f4043895e6d1268402677076c183c220fb18cabe9f9124c03b8e5"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/hash_short_id_collision_groups.csv",
+      "bytes": 4399,
+      "sha256": "ec3031ea6dab645cc476277880390b8b7a69a8c8eff86e492d8f9ff42da41500"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/hash_short_id_round_count.csv",
+      "bytes": 4399,
+      "sha256": "ec3031ea6dab645cc476277880390b8b7a69a8c8eff86e492d8f9ff42da41500"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/hash_short_id_singleton_groups.csv",
+      "bytes": 4399,
+      "sha256": "ec3031ea6dab645cc476277880390b8b7a69a8c8eff86e492d8f9ff42da41500"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/hash_short_id_split_count.csv",
+      "bytes": 4399,
+      "sha256": "ec3031ea6dab645cc476277880390b8b7a69a8c8eff86e492d8f9ff42da41500"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/idle_slots.csv",
+      "bytes": 4399,
+      "sha256": "ec3031ea6dab645cc476277880390b8b7a69a8c8eff86e492d8f9ff42da41500"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/local_short_id_trigger_count.csv",
+      "bytes": 4440,
+      "sha256": "4e13e636103e239eead459cd2591e152c95a2165ed8285c921da645d1ff0e07b"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/low_d_fallback_count.csv",
+      "bytes": 4453,
+      "sha256": "96308d59439501a517c155dde1c89efaa74dee46f6685c2096287658cee1cd63"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/max_signature_d.csv",
+      "bytes": 4404,
+      "sha256": "ada55d5dcb65f37225d48688fa501ac7a6eebe612f42bf2d9b780b4c55e4a8ce"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/peak_stack_depth.csv",
+      "bytes": 4498,
+      "sha256": "289e55762549a5dae0b7568360afa3010afbe811f39c580eb88b29b971ed264c"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/progressive_probe_count.csv",
+      "bytes": 4556,
+      "sha256": "b91d20cc5297170d67858f8e96d5a5b8aaf53e2b2d51159d92e0973eac8d8939"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/raw_runs.csv",
+      "bytes": 1554325,
+      "sha256": "f21faab45a2624782548b44067b67391c85fbf4561f22e294de3549765baba41"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/run_manifest.csv",
+      "bytes": 387931,
+      "sha256": "d7c97a0b68803c10d9fa8727d60a4f9ac3e4152a40847868e3c96cc274ffc501"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/signature_collision_groups.csv",
+      "bytes": 4556,
+      "sha256": "db088897478f32350d7c16a3ea514c406d20e1ea4a8ecfd191c40c82fbcb87f1"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/signature_grouping_trigger_count.csv",
+      "bytes": 4547,
+      "sha256": "895171e90901eec6f9eae15e9abc8fa894d5c1f80c8a16c7f7ac962d99ca5b11"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/signature_groups_pruned.csv",
+      "bytes": 4612,
+      "sha256": "26f10e0d7d7ff31cd71f8a0c431276a115e02532ff865cbff676602c6bff55c5"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/signature_marker_bits.csv",
+      "bytes": 4639,
+      "sha256": "336678846f0fd6ab9bdaf300169df1fefedfc6514debc45e6bfccf61964402b0"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/signature_marker_tag_bits.csv",
+      "bytes": 4639,
+      "sha256": "336678846f0fd6ab9bdaf300169df1fefedfc6514debc45e6bfccf61964402b0"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/signature_non_idle_marker_count.csv",
+      "bytes": 4621,
+      "sha256": "58fbb3f7d10431eab17d5e4b405c46b2aa766e8f85f4663e2a1e4c1feb8ef1a6"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/signature_singleton_groups.csv",
+      "bytes": 4595,
+      "sha256": "d168f9a8bbf75b747a538c81f4ef8d765f42eb23a2166b9da29264e1fb74e3f1"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/small_cluster_guard_count.csv",
+      "bytes": 4399,
+      "sha256": "ec3031ea6dab645cc476277880390b8b7a69a8c8eff86e492d8f9ff42da41500"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/sparse_signature_groups.csv",
+      "bytes": 4621,
+      "sha256": "58fbb3f7d10431eab17d5e4b405c46b2aa766e8f85f4663e2a1e4c1feb8ef1a6"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/suffix_signature_trigger_count.csv",
+      "bytes": 4399,
+      "sha256": "ec3031ea6dab645cc476277880390b8b7a69a8c8eff86e492d8f9ff42da41500"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/summary_ci95.csv",
+      "bytes": 330506,
+      "sha256": "5bb0d70a57889934c270d2a30e6fd0323f3a43d030a9d59b9f607a3fe65e7dcf"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/system_efficiency.csv",
+      "bytes": 4399,
+      "sha256": "6db843d65f5ec7d7a51d5429613cf593b4dc623d870ab24e27748b778af97a91"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/throughput_tags_per_sec.csv",
+      "bytes": 4539,
+      "sha256": "38ccac99fffec2196b98b7d3c9aeef6503a238be200ec4290f397a4984a83fe2"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/total_bits.csv",
+      "bytes": 4747,
+      "sha256": "b8ecfbf5bafa5647327ab35ac826a9a088eb88fa996f1cc006652f6592db3c3d"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/total_energy_uj.csv",
+      "bytes": 4759,
+      "sha256": "f53253f6175f96e18311d89f68afbfed206b6184a935c628aee672a724701f8e"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/total_protocol_time_ms.csv",
+      "bytes": 4619,
+      "sha256": "9cfa56b47c6d45e1110b05aa1533a2224606e85d0248091916f50ee90734d412"
+    },
+    {
+      "path": "results_paper_final/formal_sgct_signature_sensitivity/total_steps.csv",
+      "bytes": 4639,
+      "sha256": "9bc0d57df0fdaac3dbaba4c31535886b92a05e80e4037017b7d372bdfeac91ac"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/avg_query_efficiency.csv",
+      "bytes": 1199,
+      "sha256": "6f7ce56437533bf869d8fc38c6577d3bd70aa7f333d970c23eac0f6b403885a5"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/avg_reader_bits.csv",
+      "bytes": 1328,
+      "sha256": "e0c6f6eba086a69ae324bb01415ad8fa31a041ac9a589b97fc48fed490c7a453"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/avg_tag_bits.csv",
+      "bytes": 1451,
+      "sha256": "46e15be0c797ba67a40bdad64447d81363dfd934d78da96a405048a7da6ef36c"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/avg_tag_responses.csv",
+      "bytes": 1150,
+      "sha256": "c41f77921138b58e9bea5b3171468b4e28f50bf6b16db471326d514ffc87ab3b"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/avg_total_bits.csv",
+      "bytes": 1464,
+      "sha256": "92fd8571e0433d12a56d12d879dbb1877f3cbd52452df7571b013216729958ba"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/collision_slots.csv",
+      "bytes": 1572,
+      "sha256": "e68ed52119ad7939c20e39bc9399d62a6be300f3e3e368f4979e8f9db1626d2a"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/energy_per_tag_uj.csv",
+      "bytes": 167,
+      "sha256": "09ec8539050e5cd830f0d98c578590f667502d71ea85a6e5fd6a7f7ecef63db2"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/fcw_cache_created_count.csv",
+      "bytes": 181,
+      "sha256": "5883e8883161ffa2b4129e42d5559e900ac357e949ed25d7cf2aa37723feb441"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/fcw_cache_hit_count.csv",
+      "bytes": 181,
+      "sha256": "81b1d4320995fa4f92a990a1b40685855d785b190dedbdfa01a0c7ffab79671a"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/fcw_cache_hit_ratio.csv",
+      "bytes": 153,
+      "sha256": "89fef8d8db4b3ab1ff29418f095c456ca4938c0f998adc24f2427f808cff7799"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/formal_main_scalability_uniform_plot.png",
+      "bytes": 4951872,
+      "sha256": "3c4e2fbf3acc80872315728232e7043a3583dd6bd99f68a2060e6393cccf0b78"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/hash_short_id_collision_groups.csv",
+      "bytes": 148,
+      "sha256": "79c3d9ab009ae39be72c507bc282273565fafb0f632a0b165bd9be407aca9f36"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/hash_short_id_round_count.csv",
+      "bytes": 148,
+      "sha256": "79c3d9ab009ae39be72c507bc282273565fafb0f632a0b165bd9be407aca9f36"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/hash_short_id_singleton_groups.csv",
+      "bytes": 148,
+      "sha256": "79c3d9ab009ae39be72c507bc282273565fafb0f632a0b165bd9be407aca9f36"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/hash_short_id_split_count.csv",
+      "bytes": 148,
+      "sha256": "79c3d9ab009ae39be72c507bc282273565fafb0f632a0b165bd9be407aca9f36"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/idle_slots.csv",
+      "bytes": 1344,
+      "sha256": "da4c3cf3a0a7d5108bbf4b8714963579fa7a85d02f442f140ef62be02d3265df"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/inspect_collision_count.csv",
+      "bytes": 162,
+      "sha256": "926497d2c7ca118863408237dde85c9dc3a777c3f70bc45956925473f54e7645"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/local_short_id_trigger_count.csv",
+      "bytes": 168,
+      "sha256": "162cac083d852b5916fe08cb3e88afbec65a3935790d0fd6143a18deddb25f10"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/low_d_fallback_count.csv",
+      "bytes": 148,
+      "sha256": "79c3d9ab009ae39be72c507bc282273565fafb0f632a0b165bd9be407aca9f36"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/max_signature_d.csv",
+      "bytes": 148,
+      "sha256": "e8cf5f9d3146eadc67722274ddb2ea3ca63af9530d3a0e47375d37dd1d9321a9"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/paired_significance.csv",
+      "bytes": 9375,
+      "sha256": "7ea9a9d07eb439e0ea9cb55c3ac82c75b8baf93bd41a6b7089e4ebe5e48ae4d9"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/peak_stack_depth.csv",
+      "bytes": 1082,
+      "sha256": "2cf1f9836da3dbea872482a7ef19936ce86ef6829e2cb8200e314fd5546a0a3b"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/progressive_probe_count.csv",
+      "bytes": 168,
+      "sha256": "7147b2380f80a4476fadfb38b7957372a2feff22d3944ef5e45286aae4623599"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/raw_runs.csv",
+      "bytes": 3065265,
+      "sha256": "2efe6fe39f3e7c767b3a6a9e0dd6aa3689bcbae7ab1f823a08c7cdcffff35619"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/run_manifest.csv",
+      "bytes": 494210,
+      "sha256": "331363b4851870894eee707b7b17df9b94bf031ed8c09dbacdd67be15c669027"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/signature_collision_groups.csv",
+      "bytes": 168,
+      "sha256": "aafe95890f79ba8cc7f0e93d6aa9447f7459fd9201d7e212b116bd566ee859f8"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/signature_grouping_trigger_count.csv",
+      "bytes": 168,
+      "sha256": "07ade9192d73e512e8b62eeba1ba571e7f00eb3427f5d65f62995b79cf458401"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/signature_groups_pruned.csv",
+      "bytes": 188,
+      "sha256": "fbb0fe2eb2f80a78d3c33a000e04e8c1685fbef2f571ee16af591e48f7d57d34"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/signature_marker_bits.csv",
+      "bytes": 184,
+      "sha256": "a0c73924c8a522fb1d7d00625799b7b371000bf7916bfb3f4a10b282c85ad526"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/signature_marker_tag_bits.csv",
+      "bytes": 184,
+      "sha256": "a0c73924c8a522fb1d7d00625799b7b371000bf7916bfb3f4a10b282c85ad526"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/signature_non_idle_marker_count.csv",
+      "bytes": 179,
+      "sha256": "4ad1526dcda1e0b4a469dfb363e8188643d36f1e81259f83507953bb17720f30"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/signature_singleton_groups.csv",
+      "bytes": 179,
+      "sha256": "b9a5a5e5a80635cefde29f19bcdf33556949c26c233d806be7d8b6b37a783f68"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/small_cluster_guard_count.csv",
+      "bytes": 148,
+      "sha256": "79c3d9ab009ae39be72c507bc282273565fafb0f632a0b165bd9be407aca9f36"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/sparse_signature_groups.csv",
+      "bytes": 179,
+      "sha256": "4ad1526dcda1e0b4a469dfb363e8188643d36f1e81259f83507953bb17720f30"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/suffix_signature_trigger_count.csv",
+      "bytes": 148,
+      "sha256": "79c3d9ab009ae39be72c507bc282273565fafb0f632a0b165bd9be407aca9f36"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/summary_ci95.csv",
+      "bytes": 198045,
+      "sha256": "a45c6e86849816628cc7922a6e7854e20c59256df71400d581f7d287c13b70ec"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/system_efficiency.csv",
+      "bytes": 1168,
+      "sha256": "4d986c395d4a913cf231b84647af8fb44f921ca08da0da3883ceb814ce472269"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/throughput_tags_per_sec.csv",
+      "bytes": 1458,
+      "sha256": "4125675caba7107c3a605a746ed2740b5df205dbf1e535e77d0df766fe00a514"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/total_bits.csv",
+      "bytes": 1965,
+      "sha256": "eff6986a73da914c0dd5256f247ada406153d984ae54e868a03a39e0e20086af"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/total_energy_uj.csv",
+      "bytes": 1965,
+      "sha256": "f4ce5314b0c8c6c0ab8921f61684febc80afeb3e9cc18099a07bdb4180a7ab9f"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/total_listening_energy_uj.csv",
+      "bytes": 1965,
+      "sha256": "08f62eb34c4e69742a7b516de0cd6d7b872f816ce157488253e857dfe0d41ce0"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/total_protocol_time_ms.csv",
+      "bytes": 1648,
+      "sha256": "674b5a906828d483d27128d26151afac2b5c3ef9cc3bf75825971f9f37c03aa6"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/total_reader_tx_energy_uj.csv",
+      "bytes": 170,
+      "sha256": "15ce8cc524f830980ff29b18365067777f575286a9692c5546180d5712b378b5"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/total_steps.csv",
+      "bytes": 1670,
+      "sha256": "4fdbae69696fec839c302e6f9d04ffe17b4e82bbcf26294fe0a1082b2bd2c726"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/total_tag_tx_energy_uj.csv",
+      "bytes": 167,
+      "sha256": "0d0381e861925a7ec629fc4a304a4c4425ecd6cd82a94ab9ad2ba78264f7d7e3"
+    },
+    {
+      "path": "results_paper_final/formal_main_scalability_uniform/total_transmission_energy_uj.csv",
+      "bytes": 1526,
+      "sha256": "17d5f7ab563417f65d34da1b1fc8e2e40f35849d0faa697e218728336139dc7f"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/avg_query_efficiency.csv",
+      "bytes": 1195,
+      "sha256": "1c518aa56139523a29a3981eadc257a70e59736e6903a8e53dd2a84d665be7fa"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/avg_reader_bits.csv",
+      "bytes": 1311,
+      "sha256": "397999255cc5842cf81432e5f2491c62f8582b8f1a0d736c22bc3e9c8c1fe939"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/avg_tag_bits.csv",
+      "bytes": 1426,
+      "sha256": "31f4fd317538d7082026ecfbbf37654738fe88271f14b7bb6e3dc028fbee34dc"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/avg_tag_responses.csv",
+      "bytes": 1143,
+      "sha256": "10c09cf6f15ae7a3e83c01e19f7052c27abf24b948811aa0faa3a60d3bf19463"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/avg_total_bits.csv",
+      "bytes": 1446,
+      "sha256": "b1d5ed272937be3433d295a8e81c2d642e9940fe878c855d3c38da7c8661fda7"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/collision_slots.csv",
+      "bytes": 1605,
+      "sha256": "37bd2a472fa74e2235c99cf4974ed60e2357623ba2ed68f9046e2a1947467afe"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/energy_per_tag_uj.csv",
+      "bytes": 157,
+      "sha256": "04f07a6b61db2cb0559e0effa3e2525381f83c6d67472de94b725e50f48b5ded"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/fcw_cache_created_count.csv",
+      "bytes": 170,
+      "sha256": "771377e8fce83f3f7f45c5a9d9a19dd1d4f1e1a6e06397c927a5cd4addcc6332"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/fcw_cache_hit_count.csv",
+      "bytes": 170,
+      "sha256": "d17634d35874b730766ecdc536ae7c4ebab94d511995830e1e906c5a88257f62"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/fcw_cache_hit_ratio.csv",
+      "bytes": 140,
+      "sha256": "2c885bbd5ce2e5715c0bb74a5724e6adc74f6ce6b99d9c1f2a7573ec115725a9"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/formal_id_length_sweep_plot.png",
+      "bytes": 5286641,
+      "sha256": "98b5477f564a63503baed487456a5d25e835deb89e581aa42f53d1a5990f6d8c"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/hash_short_id_collision_groups.csv",
+      "bytes": 135,
+      "sha256": "a0705085aea5e3b29b89268d42faf0a570dff86e03b6b83a03f36aeb5141bd74"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/hash_short_id_round_count.csv",
+      "bytes": 135,
+      "sha256": "a0705085aea5e3b29b89268d42faf0a570dff86e03b6b83a03f36aeb5141bd74"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/hash_short_id_singleton_groups.csv",
+      "bytes": 135,
+      "sha256": "a0705085aea5e3b29b89268d42faf0a570dff86e03b6b83a03f36aeb5141bd74"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/hash_short_id_split_count.csv",
+      "bytes": 135,
+      "sha256": "a0705085aea5e3b29b89268d42faf0a570dff86e03b6b83a03f36aeb5141bd74"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/idle_slots.csv",
+      "bytes": 1355,
+      "sha256": "bab342d3ae371503f4b5872b145eb876550ad198bf935c1cb6f67907828d14ce"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/inspect_collision_count.csv",
+      "bytes": 150,
+      "sha256": "fbc2ed6781a26884ee0cd4b4f0115f5dda39dcc414a26e306a80cd0905da5334"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/local_short_id_trigger_count.csv",
+      "bytes": 155,
+      "sha256": "b0a7c9fbc3224fce591ebb0e7b9706900e002fdc112e047322cffd3b1d31e74d"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/low_d_fallback_count.csv",
+      "bytes": 137,
+      "sha256": "993671c1d21db2e382198e2465d6831a4ee342d5e5287f34a6e24cc120fe2245"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/max_signature_d.csv",
+      "bytes": 135,
+      "sha256": "8234835857f05aad8b755834106cdd157324861850763e9ba7f6feaa12df5252"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/paired_significance.csv",
+      "bytes": 9377,
+      "sha256": "03fae361553d1bdfe8972b05d6d3d39e6a012b5a81dbd83a7f0b9c0687aecc55"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/peak_stack_depth.csv",
+      "bytes": 1077,
+      "sha256": "92f353d708d619415fdc58bb45f8d276b032b0d016ff3d059a7fd58e3c617ee7"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/progressive_probe_count.csv",
+      "bytes": 155,
+      "sha256": "f274c1accb1c72e18a74750e264a943cff83b8b501e48428b02fbf13a12484e2"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/raw_runs.csv",
+      "bytes": 3067597,
+      "sha256": "f3d55bc447145d4e4ccbf14fdd1a9a926cfb4d145b1c62d218e31b369496a3a0"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/run_manifest.csv",
+      "bytes": 419762,
+      "sha256": "ef7fbfbf8e23c7a5ae8acbbf6fea6cec02911225125e32fc8e38f737c522fa2d"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/signature_collision_groups.csv",
+      "bytes": 155,
+      "sha256": "5272083c647e0a00544736c865d4ee031af85271bf62babbab6da2685e1d78a7"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/signature_grouping_trigger_count.csv",
+      "bytes": 155,
+      "sha256": "f965b52f6d85f4def8dcb9721f2e828edddc5a5ef5059fa34494b4c8cc5ed0f3"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/signature_groups_pruned.csv",
+      "bytes": 175,
+      "sha256": "0ba8c5b733db71a6b52bfae851543a295c7f4d3f0da8628282cb3f815e474307"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/signature_marker_bits.csv",
+      "bytes": 175,
+      "sha256": "b0f74d92efa8a26c2c1d537f2acaa252a5530fa87acc7284c29cd782da0bdf8d"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/signature_marker_tag_bits.csv",
+      "bytes": 175,
+      "sha256": "b0f74d92efa8a26c2c1d537f2acaa252a5530fa87acc7284c29cd782da0bdf8d"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/signature_non_idle_marker_count.csv",
+      "bytes": 174,
+      "sha256": "499814b282f4c64214a90116ac50249e7eed20cd60203ba050eb90bfd76c8838"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/signature_singleton_groups.csv",
+      "bytes": 173,
+      "sha256": "aed1f4831f4bea5ed6f608f4efb26e914113c250d99fdd41a3cdcb3f01290593"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/small_cluster_guard_count.csv",
+      "bytes": 135,
+      "sha256": "a0705085aea5e3b29b89268d42faf0a570dff86e03b6b83a03f36aeb5141bd74"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/sparse_signature_groups.csv",
+      "bytes": 174,
+      "sha256": "499814b282f4c64214a90116ac50249e7eed20cd60203ba050eb90bfd76c8838"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/suffix_signature_trigger_count.csv",
+      "bytes": 135,
+      "sha256": "a0705085aea5e3b29b89268d42faf0a570dff86e03b6b83a03f36aeb5141bd74"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/summary_ci95.csv",
+      "bytes": 195651,
+      "sha256": "13a2657d94583ea6032606e3a842f146c0d9179a5905ad4d437e7a8952e8cc10"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/system_efficiency.csv",
+      "bytes": 1155,
+      "sha256": "2478473602520b8be4dcad27e30abbfd7748de1366ecbd1ed0c9ce7c6776d4ea"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/throughput_tags_per_sec.csv",
+      "bytes": 1457,
+      "sha256": "bdc1647a53c77595ad1c84e8d09eccc5c96c1cd3776f3d643451a63ef24fbe23"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/total_bits.csv",
+      "bytes": 2006,
+      "sha256": "c30e20d80a7c302edc6b61c187727c05cc3bd5ac019b5d46b5a7ab7b9e652ae5"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/total_energy_uj.csv",
+      "bytes": 2050,
+      "sha256": "2ee2a5836f4afa7a44018f1ecbda74870a38851450848a701b6de15596c8c0d9"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/total_listening_energy_uj.csv",
+      "bytes": 2050,
+      "sha256": "70b8d4c7abcd727f6296c6361f39871179c01bf825681c26cf9193587831df8e"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/total_protocol_time_ms.csv",
+      "bytes": 1693,
+      "sha256": "8ce0a2a06b889b235bdac8b0673dcaff79a33decb99cf3d3425783574bd06d99"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/total_reader_tx_energy_uj.csv",
+      "bytes": 165,
+      "sha256": "62622af7ea9a3aa5ba4086f6037dcbaa2202874b431e66a7f1adc979bc1b43d0"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/total_steps.csv",
+      "bytes": 1715,
+      "sha256": "3f15c73bde494ec6837b799730f8e58284e5f08bbdb1c272fb1d261608669ac7"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/total_tag_tx_energy_uj.csv",
+      "bytes": 158,
+      "sha256": "df5393cb1a4071fd13bd5f50f41c0c180394111d40a3b8824205b2f0124fb96c"
+    },
+    {
+      "path": "results_paper_final/formal_id_length_sweep/total_transmission_energy_uj.csv",
+      "bytes": 1575,
+      "sha256": "779e799e92285f81568b8882e40295815423916bd83cbde6a314868e5ced4d8d"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/avg_query_efficiency.csv",
+      "bytes": 731,
+      "sha256": "169c792defa21e19694c259c917d2322ba440a2e6227a24a3ac9b9127db70ad2"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/avg_reader_bits.csv",
+      "bytes": 826,
+      "sha256": "ef6aadae9414bc9b32fdd3616d74a3a15f599b40aead927b919aff8f3044b5cb"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/avg_tag_bits.csv",
+      "bytes": 834,
+      "sha256": "4edc8dfcb19ba1d126c12b8bea2ff1fe77b9f2fa36faf02a121e9deb9b414c44"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/avg_tag_responses.csv",
+      "bytes": 761,
+      "sha256": "c2e9330a796bdb0908e4ce0a5d2ee45cd0c8c07d932742b32777acc94a78bfae"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/avg_total_bits.csv",
+      "bytes": 854,
+      "sha256": "7f3970ed15f767025e971d7a3f8da156557524001e28707370ec5c0175085d0f"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/collision_slots.csv",
+      "bytes": 960,
+      "sha256": "ff18a964536cbc7100cdfd95a7175914ccba1bcf4549c22ec6a141dddff2c5f3"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/config_snapshot.json",
+      "bytes": 4704,
+      "sha256": "ce424ed0b5285b56657893b1e130b4d13a7bdba936a29ff1d2b48123babe3b98"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/energy_per_tag_uj.csv",
+      "bytes": 301,
+      "sha256": "508645f84a1a6c3325f0f001a73186f1bc287f8a5d5250f56b9140e184f32c1e"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/formal_experiment10_algorithm_comparison_plot.png",
+      "bytes": 4109049,
+      "sha256": "358f3ea89dbda216efc57cc8fe07998bd48d718e9ccaef423a3067a0f03d2bb2"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/hash_short_id_collision_groups.csv",
+      "bytes": 279,
+      "sha256": "c0da97aff46bb2bef3f0c71a6c9cb1bf095b67c2655b48c735f3ffc1d7810ea5"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/hash_short_id_round_count.csv",
+      "bytes": 279,
+      "sha256": "c0da97aff46bb2bef3f0c71a6c9cb1bf095b67c2655b48c735f3ffc1d7810ea5"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/hash_short_id_singleton_groups.csv",
+      "bytes": 279,
+      "sha256": "c0da97aff46bb2bef3f0c71a6c9cb1bf095b67c2655b48c735f3ffc1d7810ea5"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/hash_short_id_split_count.csv",
+      "bytes": 279,
+      "sha256": "c0da97aff46bb2bef3f0c71a6c9cb1bf095b67c2655b48c735f3ffc1d7810ea5"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/idle_slots.csv",
+      "bytes": 825,
+      "sha256": "6d7f9aa111748d8acd2a6ce61ccef71d63a77d04fbdb6f79f3062b3ade160b2e"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/local_short_id_trigger_count.csv",
+      "bytes": 293,
+      "sha256": "ba40c4a6abd1a4fa12382e2b2ac1e79cb9ac87d53e839cc6d6ae2b10f82df8ec"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/low_d_fallback_count.csv",
+      "bytes": 281,
+      "sha256": "77da7334bee5bb8ed0c4538d0f7683377c5a5e3fead878e80aa18733712ad814"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/max_signature_d.csv",
+      "bytes": 279,
+      "sha256": "dc2dd71e8212bfe96fed502b7aab5f630db70b2c2ff3e32d5974772db4d096bd"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/paired_significance.csv",
+      "bytes": 8677,
+      "sha256": "c52b1090327dcec39c6f38df9a5697f51dd2704d3a30fd1ac55f87a73cbcf1ea"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/peak_stack_depth.csv",
+      "bytes": 743,
+      "sha256": "3466f7e0df30e1be655a76844e6f5277eaaee3647889fba81019ae27df291c12"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/progressive_probe_count.csv",
+      "bytes": 296,
+      "sha256": "c69397323c3a2d050b2d80f9068e5944b2a15519f2e1ca4778b014ab4ee2e388"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/raw_runs.csv",
+      "bytes": 1462450,
+      "sha256": "a15b85136d9150714e629800e235ab4763fccce889cd0aa40e9d69b08b530a84"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/run_manifest.csv",
+      "bytes": 410732,
+      "sha256": "c78f8f521c03335e3214dafc58b77c248c438de9dab7e1a0e091594c12c0f589"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/signature_collision_groups.csv",
+      "bytes": 296,
+      "sha256": "bc271caf5927e34643d9e42a8751d71cf8d9f140214bf1ec3464db58ec6437cc"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/signature_grouping_trigger_count.csv",
+      "bytes": 296,
+      "sha256": "4c89988122e79d918c191e5122d9aab142935e6c7f122542511489e1b111ffeb"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/signature_groups_pruned.csv",
+      "bytes": 308,
+      "sha256": "f7127b914733d00193173c121ae6c77521bbc33cbc6e075aef43078fd38c2133"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/signature_marker_bits.csv",
+      "bytes": 311,
+      "sha256": "a693338fb1979c3fe018fe06da10feeab7ea11936e71ebc5dae2c33da4b4d9b7"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/signature_marker_tag_bits.csv",
+      "bytes": 311,
+      "sha256": "a693338fb1979c3fe018fe06da10feeab7ea11936e71ebc5dae2c33da4b4d9b7"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/signature_non_idle_marker_count.csv",
+      "bytes": 311,
+      "sha256": "a512474ae6dd11ac4ea5a5c3391a7c5fadbcd09ddfef4c33b17886f004f4d14b"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/signature_singleton_groups.csv",
+      "bytes": 308,
+      "sha256": "0f9b0104e8e01b6666e3c3c5183dd8630f0e1b88a32ba3984ea4a52e6c671f78"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/small_cluster_guard_count.csv",
+      "bytes": 279,
+      "sha256": "c0da97aff46bb2bef3f0c71a6c9cb1bf095b67c2655b48c735f3ffc1d7810ea5"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/sparse_signature_groups.csv",
+      "bytes": 311,
+      "sha256": "a512474ae6dd11ac4ea5a5c3391a7c5fadbcd09ddfef4c33b17886f004f4d14b"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/suffix_signature_trigger_count.csv",
+      "bytes": 279,
+      "sha256": "c0da97aff46bb2bef3f0c71a6c9cb1bf095b67c2655b48c735f3ffc1d7810ea5"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/summary_ci95.csv",
+      "bytes": 111181,
+      "sha256": "2ea7931116747e633008e59334bef5d262db0eaa9404e7099128cc1706dfc95a"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/system_efficiency.csv",
+      "bytes": 728,
+      "sha256": "8e8819faee411de94e98b3e6ebc382f53af42feeeb4d17e738092bb496cff79e"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/throughput_tags_per_sec.csv",
+      "bytes": 866,
+      "sha256": "56716d48a66b287a755cabfe9508cd37033fa0d6101bcaaa674ce63a072b2ca9"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/total_bits.csv",
+      "bytes": 1110,
+      "sha256": "212e1102348dfe644a6ceabc07b6452705194433b4b0d4efbf27a6325d945491"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/total_energy_uj.csv",
+      "bytes": 1144,
+      "sha256": "451cc929c418c342467be953e70c4eafa9d24cbd4babc9265df2cac1dded6de4"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/total_listening_energy_uj.csv",
+      "bytes": 1144,
+      "sha256": "0832dbadc232b926bb8a1d354ba9bcda0f86113fb6d24c32d33802988dd4c998"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/total_protocol_time_ms.csv",
+      "bytes": 974,
+      "sha256": "e2e473203392690c52bb4dd43912f7123de2616c00700b63058ca056772eb41c"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/total_reader_tx_energy_uj.csv",
+      "bytes": 303,
+      "sha256": "824260f2273e909428e1254bf7964188be8974e791cc7f3ffe7296a853775b3f"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/total_steps.csv",
+      "bytes": 993,
+      "sha256": "5a17b86fe27ec3f13e901cacc60ae8b4ee0136ecc2028665641464e971ca61e5"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/total_tag_tx_energy_uj.csv",
+      "bytes": 302,
+      "sha256": "d5f204f8cf94aec667d5bde0cff8563b2ba3c240bb8662a976fe98c8500fba1d"
+    },
+    {
+      "path": "results_paper_final/formal_experiment10_algorithm_comparison/total_transmission_energy_uj.csv",
+      "bytes": 919,
+      "sha256": "95ca54dc629f68d41f4544e8f7b233947ed2ca972b7ea4e1b029ffaf785f309e"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/avg_query_efficiency.csv",
+      "bytes": 1271,
+      "sha256": "1c2a6e26e949562dcefa522fd171348cecc340a8522d97dcc5dcfabbd8b2d2b6"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/avg_reader_bits.csv",
+      "bytes": 1393,
+      "sha256": "ccea426f6c9ecd90b5b90c71bbec25273df8ea4e6757282d528fe6cf57936bcf"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/avg_tag_bits.csv",
+      "bytes": 1429,
+      "sha256": "eeb5a97d7799c83b2c3a36de0929e487454b841f11c719558d9599635c4d9724"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/avg_tag_responses.csv",
+      "bytes": 1270,
+      "sha256": "e01335b3d69dc9e65c11ba651b3aee8488b37988ecc9e9f1ae014c985f1df9e4"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/avg_total_bits.csv",
+      "bytes": 1479,
+      "sha256": "f2876c3a256fb97b993ba03216a07dc16811c4c429c5e7ac42d3b25771d72c53"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/collision_slots.csv",
+      "bytes": 1620,
+      "sha256": "1d81a243c2f3881d7111e9eb112cc32c865b59f8918dee5bc770f3b2dca8127d"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/config_snapshot.json",
+      "bytes": 17291,
+      "sha256": "5ba3610cc2110cc8f097def4515d6d7e31a3369e23289e7ca5d3846bb5fe9a09"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/energy_per_tag_uj.csv",
+      "bytes": 1433,
+      "sha256": "969a38a2ec4933b8a99ac1644209df188b5ac2bd4f26a57200a0b7f705b46346"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/fcw_cache_created_count.csv",
+      "bytes": 308,
+      "sha256": "8fda209db05f033f1d6d9c4ad322c1692c50eca96363376ba89f095937e81b91"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/fcw_cache_hit_count.csv",
+      "bytes": 308,
+      "sha256": "021c9353a0cf6085cb88318172da90d1b37418e9fcdc1b7efda7ab94c90e3318"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/fcw_cache_hit_ratio.csv",
+      "bytes": 284,
+      "sha256": "5d47c309785d90a502dd595de52d778d99451dee1d42fa20ecfe7f04a8b23ff9"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/formal_experiment13_sgct_signature_grouping_plot.png",
+      "bytes": 7041005,
+      "sha256": "db8d410999369ff514c39af70865fb92782642395e30d12693c9c8e1cb9e19d0"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/hash_short_id_collision_groups.csv",
+      "bytes": 866,
+      "sha256": "b740ac14883bbd860ed332b20c010b52523d82f0e47518c30d2df6d02bc6df45"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/hash_short_id_round_count.csv",
+      "bytes": 866,
+      "sha256": "b740ac14883bbd860ed332b20c010b52523d82f0e47518c30d2df6d02bc6df45"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/hash_short_id_singleton_groups.csv",
+      "bytes": 866,
+      "sha256": "b740ac14883bbd860ed332b20c010b52523d82f0e47518c30d2df6d02bc6df45"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/hash_short_id_split_count.csv",
+      "bytes": 866,
+      "sha256": "b740ac14883bbd860ed332b20c010b52523d82f0e47518c30d2df6d02bc6df45"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/idle_slots.csv",
+      "bytes": 1382,
+      "sha256": "413cf6cba58a59a9826a9a6d8969db906d743f9dad05128b8bbb0c65611c36b0"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/inspect_collision_count.csv",
+      "bytes": 287,
+      "sha256": "038d5913d65e577cb563dfde02c88d12632a0cf60ca7ae3faf07fa66b3d5b66c"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/local_short_id_trigger_count.csv",
+      "bytes": 950,
+      "sha256": "5fc1763b11c5420437820d281353e0676312d76bab8a553928fb00ee25759f1e"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/low_d_fallback_count.csv",
+      "bytes": 899,
+      "sha256": "db3011939cb4207b12cf0d8f9cf60033a493b9655bb7dcf40ea54558cca8bb11"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/max_signature_d.csv",
+      "bytes": 874,
+      "sha256": "8dee36fbf1b1f6f918545eb4d129fc5d3f8183e9f087c5a8c3365b12bfc5efab"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/paired_significance.csv",
+      "bytes": 6234,
+      "sha256": "424a17ff9721f32f5bebb8dd72c16c18d57a9133d58a7e08f1a1e4e4b38bbe12"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/peak_stack_depth.csv",
+      "bytes": 1451,
+      "sha256": "489911a4e3943d5bcadb68bfa347b1db5bfc2bbff650c8d900219dc4a4597eed"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/progressive_probe_count.csv",
+      "bytes": 1038,
+      "sha256": "70705ead58e75ec85ad83aeef7025aa7edad54c59f4c7b86d095e94d164ad101"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/raw_runs.csv",
+      "bytes": 3679412,
+      "sha256": "8987988c1b6d59ced7624985c0d88e207303cde1f01024437139a6ea1a06dcf2"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/run_manifest.csv",
+      "bytes": 851013,
+      "sha256": "ca6d4d13125de499928ad08e082bb79708ae5bf659f14512600b91711fa29958"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/signature_collision_groups.csv",
+      "bytes": 1038,
+      "sha256": "ada4071f95b0a787f8641d7c9963095e9ce9821c7657c9502e2612c53c0c0766"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/signature_grouping_trigger_count.csv",
+      "bytes": 1035,
+      "sha256": "6ea971c82af62c1b633a121a640cf1d86283e6d820101a3fb5b4920e3ee8e51b"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/signature_groups_pruned.csv",
+      "bytes": 1112,
+      "sha256": "28f1af108afa864d0148207cd0c90f2cf10f3a90401e4d1eb9057b4132a307c0"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/signature_marker_bits.csv",
+      "bytes": 1154,
+      "sha256": "3db6c7e3cf525331047cd958c69fa5def0a225a5bbda19b7c71b3ccffa1c8af7"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/signature_marker_tag_bits.csv",
+      "bytes": 1154,
+      "sha256": "3db6c7e3cf525331047cd958c69fa5def0a225a5bbda19b7c71b3ccffa1c8af7"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/signature_non_idle_marker_count.csv",
+      "bytes": 1148,
+      "sha256": "3c78584edef4c59d5e05d606954e24ef430a1e98467de45735f2c67947f9cba1"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/signature_singleton_groups.csv",
+      "bytes": 1118,
+      "sha256": "7dbf94cc4c4b27935cbf21f20bd1c95cddbd41902e6f8dc4f6f086e9707d6df7"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/small_cluster_guard_count.csv",
+      "bytes": 866,
+      "sha256": "b740ac14883bbd860ed332b20c010b52523d82f0e47518c30d2df6d02bc6df45"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/sparse_signature_groups.csv",
+      "bytes": 1148,
+      "sha256": "3c78584edef4c59d5e05d606954e24ef430a1e98467de45735f2c67947f9cba1"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/suffix_signature_trigger_count.csv",
+      "bytes": 866,
+      "sha256": "b740ac14883bbd860ed332b20c010b52523d82f0e47518c30d2df6d02bc6df45"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/summary_ci95.csv",
+      "bytes": 397041,
+      "sha256": "e2226ea4e40de1871abf1cc5c5381f252ca4726dd88de71f32cbfb4512e634e9"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/system_efficiency.csv",
+      "bytes": 1253,
+      "sha256": "f02436b18f859afc1d273607815bcf5e9c3db5819318371851fafe7e0e9d6304"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/throughput_tags_per_sec.csv",
+      "bytes": 1531,
+      "sha256": "3deeb3567896e39938aad6784cc1e14e46e3b46b61ecc8fa76b18c13e4591c76"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/total_bits.csv",
+      "bytes": 1959,
+      "sha256": "448b2a99c3b8aca7207a8ffd6a757619742d955ab1465ce11e055be7b06b8a47"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/total_energy_uj.csv",
+      "bytes": 1990,
+      "sha256": "c75d4b71f42c26e81787a3b4adc593a28037963a6ddebce1dc8a42a5fa6d39bf"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/total_listening_energy_uj.csv",
+      "bytes": 1990,
+      "sha256": "e61369329f1f48f7b6f9aea57274676dcca965f7b91f1b07490c8fec3ba0c252"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/total_protocol_time_ms.csv",
+      "bytes": 1695,
+      "sha256": "c9bb3ad79ddaf485ec5021e194b9e19472856d327ae473c9986998bb2ac8f04a"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/total_reader_tx_energy_uj.csv",
+      "bytes": 1483,
+      "sha256": "091e545520291f4b46a01c34ca459423cd6a28550eec9145b89211e6b60d676d"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/total_steps.csv",
+      "bytes": 1734,
+      "sha256": "c4296bc9676a1547b0ed3f235b4a523060baebbc64cae46c4052539d234582d1"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/total_tag_tx_energy_uj.csv",
+      "bytes": 1437,
+      "sha256": "49ce3e2ea2faf4acd0558aae622e4509595e5ed4f4c0effaf3a78635f9604328"
+    },
+    {
+      "path": "results_paper_final/formal_experiment13_sgct_signature_grouping/total_transmission_energy_uj.csv",
+      "bytes": 1602,
+      "sha256": "779b4e0e672fe4985f92f463e5da420652d0f58b8610ce1080320ad9ed98b85c"
+    }
+  ]
+}

@@ -1,285 +1,228 @@
-# -*- coding: utf-8 -*-
-"""Generate paper-ready tables from existing formal experiment CSV files."""
+"""Build manuscript tables and figure data from immutable paper results."""
 
 from __future__ import annotations
 
 import argparse
 from pathlib import Path
-from typing import Iterable
+from typing import Dict, Iterable
 
 import pandas as pd
 
+from algorithm_base_config import DISPLAY_NAMES, PAPER_ALGORITHMS
 from compute_paper_ci import compute_ci_table, read_csv_dedup
 
 
 RESULT_ROOT = Path("results_paper_final")
-OUTPUT_DIR = RESULT_ROOT / "generated_tables"
-
-TABLE_SOURCES = {
-    "table_iii_main_algorithm_comparison": RESULT_ROOT / "formal_experiment10_algorithm_comparison",
-    "table_iv_paired_bootstrap_ci": RESULT_ROOT / "formal_experiment10_algorithm_comparison",
-    "table_v_pruning_diagnostics": RESULT_ROOT / "formal_experiment13_sgct_signature_grouping",
-    "table_vi_ablation_results": RESULT_ROOT / "formal_experiment13_sgct_signature_grouping",
-    "table_vii_ber_robustness": RESULT_ROOT / "formal_sgct_ber_robustness",
+RAW_SOURCES = {
+    "signature": RESULT_ROOT / "formal_sgct_signature_sensitivity" / "raw_runs.csv",
+    "population": RESULT_ROOT / "formal_main_scalability_uniform" / "raw_runs.csv",
+    "id_length": RESULT_ROOT / "formal_id_length_sweep" / "raw_runs.csv",
+    "comparison": RESULT_ROOT / "formal_experiment10_algorithm_comparison" / "raw_runs.csv",
+    "ablation": RESULT_ROOT / "formal_experiment13_sgct_signature_grouping" / "raw_runs.csv",
 }
 
-MAIN_ALGORITHMS = ["SGCT", "DRCT", "LAPCT", "DQTA(k_max=3)", "EMDT", "NLHQT(n=2)", "EAQ_CBB", "HT_EEAC"]
-ABLATION_ALGORITHMS = [
-    "SGCT",
-    "SGCT(no_signature_grouping)",
-    "SGCT(no_local_short_id)",
-    "SGCT(no_suffix_extension)",
-    "SGCT(no_low_d_fallback)",
-    "SGCT(d4)",
-    "SGCT(d6)",
-    "SGCT(d8)",
-    "SGCT(d10)",
-]
-MAIN_METRICS = [
-    "total_protocol_time_ms",
-    "throughput_tags_per_sec",
-    "system_efficiency",
-    "total_bits",
-    "avg_total_bits",
-    "total_energy_uj",
-]
-DIAGNOSTIC_METRICS = [
-    "progressive_probe_count",
-    "signature_grouping_trigger_count",
-    "local_short_id_trigger_count",
-    "signature_groups_pruned",
-    "sparse_signature_groups",
-    "signature_collision_groups",
-    "signature_singleton_groups",
-    "low_d_fallback_count",
-    "suffix_signature_trigger_count",
-    "max_signature_d",
-]
+PAPER_RAW_ALGORITHMS = {
+    "SGCT": "SGCT",
+    "DRCT": "DRCT",
+    "LAPCT": "LAPCT",
+    "EMDT": "EMDT",
+    "DQTA": "DQTA(k_max=3)",
+    "EAQ-CBB": "EAQ_CBB",
+    "NLHQT(n=2)": "NLHQT(n=2)",
+}
+RAW_TO_PAPER = {raw: display for display, raw in PAPER_RAW_ALGORITHMS.items()}
+PAPER_RAW_SET = set(PAPER_RAW_ALGORITHMS.values())
+PAPER_ID_LENGTHS = (20, 40, 60, 80, 96, 128, 160, 192, 256)
 
 
-def load_summary(experiment_dir: Path) -> pd.DataFrame:
-    path = experiment_dir / "summary_ci95.csv"
-    if not path.exists():
-        raise FileNotFoundError(path)
-    return read_csv_dedup(path)
+def validate_input_sources() -> list[str]:
+    errors = []
+    common = {"algorithm_name", "total_protocol_time_ms", "avg_total_bits", "run_id"}
+    for name, path in RAW_SOURCES.items():
+        if not path.is_file():
+            errors.append(f"missing {name} source: {path.as_posix()}")
+            continue
+        columns = set(pd.read_csv(path, nrows=0).columns)
+        missing = common.difference(columns)
+        if missing:
+            errors.append(f"{name} source lacks columns: {', '.join(sorted(missing))}")
+    return errors
 
 
-def metric_table(
-    summary: pd.DataFrame,
-    algorithms: Iterable[str],
-    metrics: Iterable[str],
-    scenario_filter: str | None = None,
+def _paper_algorithms(frame: pd.DataFrame) -> pd.DataFrame:
+    selected = frame[frame["algorithm_name"].isin(PAPER_RAW_SET)].copy()
+    selected["Algorithm"] = selected["algorithm_name"].map(RAW_TO_PAPER)
+    selected["Algorithm"] = pd.Categorical(
+        selected["Algorithm"], categories=PAPER_ALGORITHMS, ordered=True
+    )
+    return selected
+
+
+def _mean_metrics(
+    frame: pd.DataFrame, group_columns: Iterable[str]
 ) -> pd.DataFrame:
-    df = summary[
-        summary["algorithm_name"].isin(list(algorithms))
-        & summary["metric"].isin(list(metrics))
-    ].copy()
-    if scenario_filter is not None:
-        df = df[df["scenario_point"].astype(str).str.contains(scenario_filter, regex=False)]
-    df["mean_ci95"] = df.apply(lambda row: f"{row['mean']:.4f} +/- {row['ci95']:.4f}", axis=1)
-    return df[
-        ["scenario_point", "algorithm_name", "metric", "mean", "ci95", "p95", "n", "mean_ci95"]
-    ].sort_values(["scenario_point", "metric", "algorithm_name"])
-
-
-def add_gamma_b(raw_path: Path, output_path: Path) -> None:
-    df = read_csv_dedup(raw_path)
-    required = {"throughput_tags_per_sec", "avg_total_bits"}
-    if not required.issubset(df.columns):
-        return
-    df["gamma_B_run"] = df["throughput_tags_per_sec"] / df["avg_total_bits"].replace(0, pd.NA)
-    summary = (
-        df.groupby(["scenario_point", "algorithm_name"], dropna=False)
-        .agg(
-            gamma_B_run_mean=("gamma_B_run", "mean"),
-            gamma_B_run_std=("gamma_B_run", "std"),
-            throughput_mean=("throughput_tags_per_sec", "mean"),
-            avg_total_bits_mean=("avg_total_bits", "mean"),
-            n=("gamma_B_run", "count"),
-        )
-        .reset_index()
-    )
-    summary["gamma_B_run_ci95"] = 1.96 * summary["gamma_B_run_std"].fillna(0.0) / summary["n"].pow(0.5)
-    summary["gamma_B_aggregate"] = summary["throughput_mean"] / summary["avg_total_bits_mean"]
-    summary.to_csv(output_path, index=False, encoding="utf-8-sig", float_format="%.6f")
-
-
-def compact_algorithm_table(raw_path: Path, algorithms: Iterable[str]) -> pd.DataFrame:
-    df = read_csv_dedup(raw_path)
-    df = df[df["algorithm_name"].isin(list(algorithms))].copy()
-    required = {
-        "algorithm_name",
-        "total_protocol_time_ms",
-        "throughput_tags_per_sec",
-        "avg_total_bits",
-        "system_efficiency",
-    }
-    missing = required.difference(df.columns)
-    if missing:
-        raise ValueError(f"Missing required columns for compact table: {', '.join(sorted(missing))}")
-    df["gamma_B_run"] = df["throughput_tags_per_sec"] / df["avg_total_bits"].replace(0, pd.NA)
     grouped = (
-        df.groupby("algorithm_name", dropna=False)
-        .agg(
-            time_ms_mean=("total_protocol_time_ms", "mean"),
-            time_ms_sd=("total_protocol_time_ms", "std"),
-            throughput_mean=("throughput_tags_per_sec", "mean"),
-            bits_per_tag_mean=("avg_total_bits", "mean"),
-            gamma_B_run_mean=("gamma_B_run", "mean"),
-            efficiency_mean=("system_efficiency", "mean"),
-            n=("total_protocol_time_ms", "count"),
-        )
-        .reset_index()
-        .rename(columns={"algorithm_name": "Algorithm"})
-    )
-    grouped["gamma_B_aggregate"] = grouped["throughput_mean"] / grouped["bits_per_tag_mean"]
-    grouped["Rank"] = grouped["time_ms_mean"].rank(method="min").astype(int)
-    return grouped[
-        [
-            "Algorithm",
-            "time_ms_mean",
-            "time_ms_sd",
-            "throughput_mean",
-            "bits_per_tag_mean",
-            "gamma_B_aggregate",
-            "gamma_B_run_mean",
-            "efficiency_mean",
-            "Rank",
-            "n",
+        frame.groupby(list(group_columns), observed=True, sort=False)[
+            ["total_protocol_time_ms", "avg_total_bits"]
         ]
-    ].sort_values(["Rank", "Algorithm"])
-
-
-def compact_ci_table(ci: pd.DataFrame) -> pd.DataFrame:
-    table = ci[
-        ci["method"] == "paired_bootstrap_aggregate_mean_reduction"
-    ][["baseline", "mean_reduction_pct", "ci95_low_pct", "ci95_high_pct", "n"]].copy()
-    table = table.rename(
-        columns={
-            "baseline": "Baseline",
-            "mean_reduction_pct": "Aggregate time reduction pct",
-            "ci95_low_pct": "CI95 low pct",
-            "ci95_high_pct": "CI95 high pct",
-        }
-    )
-    return table.sort_values("Aggregate time reduction pct", ascending=False)
-
-
-def compact_diagnostics_table(summary: pd.DataFrame) -> pd.DataFrame:
-    df = summary[
-        (summary["algorithm_name"] == "SGCT")
-        & summary["metric"].isin(DIAGNOSTIC_METRICS)
-    ].copy()
-    return (
-        df.groupby("metric", dropna=False)
-        .agg(
-            mean=("mean", "mean"),
-            ci95=("ci95", "mean"),
-            max_p95=("p95", "max"),
-            scenario_count=("scenario_point", "nunique"),
-        )
+        .mean()
         .reset_index()
-        .rename(columns={"metric": "Diagnostic"})
-        .sort_values("Diagnostic")
-    )
-
-
-def compact_ber_table(raw_path: Path) -> pd.DataFrame:
-    df = read_csv_dedup(raw_path)
-    required = {"algorithm_name", "scenario_label", "ber", "total_protocol_time_ms", "avg_total_bits", "system_efficiency"}
-    missing = required.difference(df.columns)
-    if missing:
-        raise ValueError(f"Missing required columns for BER compact table: {', '.join(sorted(missing))}")
-    df = df[df["algorithm_name"] == "SGCT"].copy()
-    return (
-        df.groupby(["scenario_label", "ber"], dropna=False)
-        .agg(
-            time_ms_mean=("total_protocol_time_ms", "mean"),
-            time_ms_sd=("total_protocol_time_ms", "std"),
-            bits_per_tag_mean=("avg_total_bits", "mean"),
-            efficiency_mean=("system_efficiency", "mean"),
-            n=("total_protocol_time_ms", "count"),
+        .rename(
+            columns={
+                "total_protocol_time_ms": "Identification time (s)",
+                "avg_total_bits": "Communication cost (bits/update)",
+            }
         )
-        .reset_index()
-        .sort_values(["scenario_label", "ber"])
+    )
+    grouped["Identification time (s)"] /= 1000.0
+    return grouped
+
+
+def _fig4_data() -> pd.DataFrame:
+    frame = read_csv_dedup(RAW_SOURCES["signature"])
+    valid_pairs = {(4, 256), (6, 256), (8, 256), (10, 1024)}
+    mask = [
+        (int(d), int(cap)) in valid_pairs
+        for d, cap in zip(frame["sgct_d_target"], frame["signature_slot_cap"])
+    ]
+    selected = frame.loc[mask].copy()
+    return _mean_metrics(selected, ["sgct_d_target"]).rename(
+        columns={"sgct_d_target": "d"}
     )
 
 
-def write_table(df: pd.DataFrame, output_dir: Path, stem: str) -> None:
+def _fig5_population_data() -> pd.DataFrame:
+    frame = _paper_algorithms(read_csv_dedup(RAW_SOURCES["population"]))
+    return _mean_metrics(frame, ["TOTAL_TAGS", "Algorithm"]).rename(
+        columns={"TOTAL_TAGS": "Number of tags"}
+    )
+
+
+def _fig5_id_length_data() -> pd.DataFrame:
+    frame = _paper_algorithms(read_csv_dedup(RAW_SOURCES["id_length"]))
+    frame = frame[frame["BINARY_LENGTH"].isin(PAPER_ID_LENGTHS)]
+    return _mean_metrics(frame, ["BINARY_LENGTH", "Algorithm"]).rename(
+        columns={"BINARY_LENGTH": "ID length (bits)"}
+    )
+
+
+def _fig6_data() -> pd.DataFrame:
+    frame = _paper_algorithms(read_csv_dedup(RAW_SOURCES["comparison"]))
+    return _mean_metrics(frame, ["scenario_label", "Algorithm"]).rename(
+        columns={"scenario_label": "EPC structure"}
+    )
+
+
+def _table_iii() -> pd.DataFrame:
+    frame = _paper_algorithms(read_csv_dedup(RAW_SOURCES["comparison"]))
+    table = _mean_metrics(frame, ["Algorithm"])
+    table["Algorithm"] = table["Algorithm"].astype("object")
+    order = {name: index for index, name in enumerate(PAPER_ALGORITHMS)}
+    return table.sort_values("Algorithm", key=lambda values: values.map(order)).reset_index(drop=True)
+
+
+def _fig7_data() -> pd.DataFrame:
+    frame = read_csv_dedup(RAW_SOURCES["ablation"])
+    keys = ["SGCT", "SGCT(no_signature_grouping)", "SGCT(no_local_short_id)"]
+    means = frame[frame["algorithm_name"].isin(keys)].groupby("algorithm_name")[[
+        "total_protocol_time_ms",
+        "avg_total_bits",
+    ]].mean()
+    baseline = means.loc["SGCT"]
+    rows = []
+    for key in keys[1:]:
+        rows.append(
+            {
+                "Variant": DISPLAY_NAMES[key],
+                "Identification-time increase (%)": 100.0
+                * (means.loc[key, "total_protocol_time_ms"] / baseline["total_protocol_time_ms"] - 1.0),
+                "Communication-cost increase (%)": 100.0
+                * (means.loc[key, "avg_total_bits"] / baseline["avg_total_bits"] - 1.0),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def _table_iv(bootstrap_samples: int) -> pd.DataFrame:
+    baselines = [PAPER_RAW_ALGORITHMS[name] for name in PAPER_ALGORITHMS if name != "SGCT"]
+    frames = []
+    for metric, display in (
+        ("total_protocol_time_ms", "Identification time"),
+        ("avg_total_bits", "Communication cost"),
+    ):
+        table = compute_ci_table(
+            RAW_SOURCES["comparison"],
+            candidate="SGCT",
+            baselines=baselines,
+            metric=metric,
+            bootstrap_samples=bootstrap_samples,
+        )
+        table = table[
+            table["method"] == "paired_bootstrap_aggregate_mean_reduction"
+        ].copy()
+        table["Baseline"] = table["baseline"].map(DISPLAY_NAMES)
+        table["Metric"] = display
+        frames.append(
+            table[
+                [
+                    "Baseline",
+                    "Metric",
+                    "n",
+                    "mean_reduction_pct",
+                    "ci95_low_pct",
+                    "ci95_high_pct",
+                ]
+            ].rename(
+                columns={
+                    "mean_reduction_pct": "Mean reduction (%)",
+                    "ci95_low_pct": "CI95 low (%)",
+                    "ci95_high_pct": "CI95 high (%)",
+                }
+            )
+        )
+    return pd.concat(frames, ignore_index=True)
+
+
+def build_paper_outputs(
+    output_dir: Path, bootstrap_samples: int = 10000
+) -> Dict[str, pd.DataFrame]:
+    errors = validate_input_sources()
+    if errors:
+        raise ValueError("; ".join(errors))
+    outputs = {
+        "fig4_signature_width_data.csv": _fig4_data(),
+        "fig5_population_scaling_data.csv": _fig5_population_data(),
+        "fig5_id_length_data.csv": _fig5_id_length_data(),
+        "fig6_epc_structure_data.csv": _fig6_data(),
+        "fig7_ablation_data.csv": _fig7_data(),
+        "table_iii_average_performance.csv": _table_iii(),
+        "table_iv_paired_bootstrap_ci.csv": _table_iv(bootstrap_samples),
+    }
     output_dir.mkdir(parents=True, exist_ok=True)
-    df.to_csv(output_dir / f"{stem}.csv", index=False, encoding="utf-8-sig", float_format="%.6f")
-    with open(output_dir / f"{stem}.md", "w", encoding="utf-8") as handle:
-        columns = list(df.columns)
-        handle.write("| " + " | ".join(columns) + " |\n")
-        handle.write("| " + " | ".join(["---"] * len(columns)) + " |\n")
-        for _, row in df.iterrows():
-            values = [str(row[col]).replace("|", "\\|") for col in columns]
-            handle.write("| " + " | ".join(values) + " |\n")
-
-
-def generate_tables(
-    output_dir: Path = OUTPUT_DIR,
-    bootstrap_samples: int = 10000,
-    compact_only: bool = False,
-) -> None:
-    main_summary = load_summary(TABLE_SOURCES["table_iii_main_algorithm_comparison"])
-    ablation_summary = load_summary(TABLE_SOURCES["table_vi_ablation_results"])
-    ber_summary = load_summary(TABLE_SOURCES["table_vii_ber_robustness"])
-    main_raw = TABLE_SOURCES["table_iii_main_algorithm_comparison"] / "raw_runs.csv"
-    ablation_raw = TABLE_SOURCES["table_vi_ablation_results"] / "raw_runs.csv"
-    ber_raw = TABLE_SOURCES["table_vii_ber_robustness"] / "raw_runs.csv"
-
-    if not compact_only:
-        write_table(
-            metric_table(main_summary, MAIN_ALGORITHMS, MAIN_METRICS),
-            output_dir,
-            "table_iii_main_algorithm_comparison",
-        )
-
-    ci = compute_ci_table(
-        main_raw,
-        baselines=["DRCT", "LAPCT", "DQTA(k_max=3)", "EMDT", "NLHQT(n=2)", "EAQ_CBB", "HT_EEAC"],
-        bootstrap_samples=bootstrap_samples,
-    )
-    ci = ci[ci["method"] == "paired_bootstrap_aggregate_mean_reduction"].copy()
-    if not compact_only:
-        write_table(ci, output_dir, "table_iv_paired_bootstrap_ci")
-        write_table(
-            metric_table(ablation_summary, ["SGCT"], DIAGNOSTIC_METRICS),
-            output_dir,
-            "table_v_pruning_diagnostics",
-        )
-        write_table(
-            metric_table(ablation_summary, ABLATION_ALGORITHMS, MAIN_METRICS),
-            output_dir,
-            "table_vi_ablation_results",
-        )
-        write_table(
-            metric_table(ber_summary, ["SGCT", "DRCT", "LAPCT", "DQTA(k_max=3)", "EMDT", "NLHQT(n=2)"], MAIN_METRICS),
-            output_dir,
-            "table_vii_ber_robustness",
-        )
-
-    write_table(compact_algorithm_table(main_raw, MAIN_ALGORITHMS), output_dir, "paper_table_iii_compact")
-    write_table(compact_ci_table(ci), output_dir, "paper_table_iv_compact")
-    write_table(compact_diagnostics_table(ablation_summary), output_dir, "paper_table_v_compact")
-    write_table(compact_algorithm_table(ablation_raw, ABLATION_ALGORITHMS), output_dir, "paper_table_vi_compact")
-    write_table(compact_ber_table(ber_raw), output_dir, "paper_table_vii_compact")
-    add_gamma_b(main_raw, output_dir / "derived_gamma_b.csv")
+    for filename, table in outputs.items():
+        table.to_csv(output_dir / filename, index=False, encoding="utf-8", float_format="%.6f")
+    return outputs
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate paper tables from formal result CSVs.")
-    parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check-only", action="store_true")
+    parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--bootstrap-samples", type=int, default=10000)
-    parser.add_argument("--compact-only", action="store_true")
     args = parser.parse_args()
-    generate_tables(
-        output_dir=args.output_dir,
-        bootstrap_samples=args.bootstrap_samples,
-        compact_only=args.compact_only,
-    )
-    print(f"Generated paper tables in {args.output_dir}")
+
+    errors = validate_input_sources()
+    if errors:
+        for error in errors:
+            print(f"FAIL: {error}")
+        raise SystemExit(1)
+    if args.check_only:
+        print("PASS: all five immutable paper-result sources are readable.")
+        return
+    if args.output_dir is None:
+        parser.error("--output-dir is required unless --check-only is used")
+    build_paper_outputs(args.output_dir, args.bootstrap_samples)
+    print(f"Generated manuscript outputs in {args.output_dir}")
 
 
 if __name__ == "__main__":

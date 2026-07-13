@@ -1,109 +1,42 @@
-﻿# -*- coding: utf-8 -*-
-from NLHQT import NLHQTAlgorithm
-from LAPCT import LAPCTAlgorithm
+"""Canonical algorithm registry for the submitted SGCT manuscript."""
+
 from DQTA import DQTAAlgorithm
-from EMDT import EMDTAlgorithm
+from DRCT import DRCTAlgorithm
 from EAQ_CBB import EAQCBBAlgorithm
-from ICT import ICT_Algorithm
-from SD_CGQT import SDCGQTAlgorithm
-from SUBF_CGDFSA import SUBF_CGDFSA_Algorithm
-from HT_EEAC import HT_EEAC
-from FHS_RAC import FHS_RAC
-from OCG_HLCT import OCGHLCTAlgorithm
-from OCG_HLCT_PB import OCGHLCTPBAlgorithm
-from DRCT_final import DRCTFinalAlgorithm
-PLOT_STYLE_PALETTE = [
+from EMDT import EMDTAlgorithm
+from LAPCT import LAPCTAlgorithm
+from NLHQT import NLHQTAlgorithm
+from SGCT import SGCTAlgorithm
 
 
-    {"color": "purple", "linestyle": "-", "marker": "*", "linewidth": 2.5, "markersize": 10, "zorder": 10},
-
-    {"color": "deeppink", "linestyle": "--", "marker": "p", "linewidth": 2.0},
-    # Style 2:
-    {"color": "red", "linestyle": "-", "marker": "o"},
-    # Style 3:
-    {"color": "green", "linestyle": "-.", "marker": "s"},
-    # Style 4:
-    {"color": "blue", "linestyle": ":", "marker": "x"},
-    # Style 5:
-    {"color": "darkorange", "linestyle": "--", "marker": "^"},
-    # Style 6:
-    {"color": "brown", "linestyle": "-", "marker": "d"},
-    # Style 7:
-    {"color": "cyan", "linestyle": ":", "marker": "+"},
-    # Style 8:
-    {"color": "olive", "linestyle": "-.", "marker": "v"},
-    # Style 9:
-    {"color": "gray", "linestyle": "--", "marker": "."},
+PAPER_ALGORITHMS = [
+    "SGCT",
+    "DRCT",
+    "LAPCT",
+    "EMDT",
+    "DQTA",
+    "EAQ-CBB",
+    "NLHQT(n=2)",
 ]
-"""
-    'SD-CGQT': {
-        "class": SDCGQTAlgorithm,
-        "config": {},
-        "year": 23,
-        "style_id": 7,
-    },
-    'SUBF_CGDFSA': {
-        "class": SUBF_CGDFSA_Algorithm,
-        "config": {},
-        "year": 24,
-        "style_id": 7,
-    },
-    'ICT': {
-        "class": ICT_Algorithm,
-        "config": {},
-        "year": 24,
-        "style_id": 7,
-    },
-"""
-ALGORITHMS_TO_TEST = [
-    'HLCT-Base',
-    'SGCT',
-    'DRCT',
-    'NLHQT(n=2)', # 瑕佹祴璇曠殑鐗堟湰
-    'NLHQT(n=1)', # 瑕佹祴璇曠殑鐗堟湰
-    'LAPCT', # 瑕佹祴璇曠殑鐗堟湰
-    'DQTA(k_max=3)',
-    'EMDT',
-    'EAQ_CBB', # 瑕佹祴璇曠殑鐗堟湰
-    'HT_EEAC',
-    'FHS_RAC',
-    'ICT',
-    'SD-CGQT',
-    'SUBF-CGDFSA',
-]
+
+# Historical CSV keys remain immutable. Convert them only at the display layer.
+DISPLAY_NAMES = {
+    "SGCT": "SGCT",
+    "DRCT": "DRCT",
+    "LAPCT": "LAPCT",
+    "EMDT": "EMDT",
+    "DQTA": "DQTA",
+    "DQTA(k_max=3)": "DQTA",
+    "EAQ_CBB": "EAQ-CBB",
+    "EAQ-CBB": "EAQ-CBB",
+    "NLHQT(n=2)": "NLHQT(n=2)",
+    "SGCT(no_signature_grouping)": "SGCT (w/o marker pruning)",
+    "SGCT(no_local_short_id)": "SGCT (w/o local short-ID)",
+}
+
 ALGORITHM_LIBRARY = {
-    'HLCT-Base': {
-        "class": OCGHLCTAlgorithm,
-        "config": {
-            "f_default": 5,
-            "f_escalated": 8,
-            "r_max": 3,
-            "rho": 0.5,
-            "H_skew": 2,
-            "theta_v": 2,
-            "R_OVG": 1,
-            "H_stop": 3,
-            "inspect_window_bits": 8,
-            "ovg_min_prefix_bits": 16,
-            "enable_fused_check_window": True,
-            "fused_window_bits": 4,
-            "enable_adaptive_fcw": False,
-            "adaptive_fused_window_bits": 8,
-            "adaptive_fcw_min_bits": 2,
-            "adaptive_fcw_max_bits": 16,
-            "enable_prefix_stagnation": True,
-            "prefix_stagnation_threshold": 1,
-            "enable_adaptive_cbit": True,
-            "adaptive_cbit_max": 4,
-            "adaptive_cbit_idle_guard": 0.6,
-            "enable_multibit_fallback": True,
-            "fallback_max_bits": 2,
-        },
-        "year": 26,
-        "style_id": 0,
-    },
-    'SGCT': {
-        "class": OCGHLCTPBAlgorithm,
+    "SGCT": {
+        "class": SGCTAlgorithm,
         "config": {
             "probe_chunk_bits": 16,
             "d_target_dense": 8,
@@ -138,11 +71,12 @@ ALGORITHM_LIBRARY = {
             "small_cluster_guard_max_tags": 128,
             "small_cluster_guard_prefix_bits": 64,
         },
-        "year": 26,
-        "style_id": 1,
+        "display_name": "SGCT",
+        "year": 2026,
+        "style_id": 0,
     },
-    'DRCT': {
-        "class": DRCTFinalAlgorithm,
+    "DRCT": {
+        "class": DRCTAlgorithm,
         "config": {
             "check_bits": 4,
             "answer_bits": 2,
@@ -150,75 +84,46 @@ ALGORITHM_LIBRARY = {
             "paper_timing": False,
             "include_reader_cmd_base_bits": True,
         },
-        "year": 25,
-        "style_id": 2,
-    },
-    'LAPCT': {
-        "class": LAPCTAlgorithm,
-        "config": {'k_threshold_divisor': 3.0},
-        "year": 24,
+        "display_name": "DRCT",
+        "year": 2025,
         "style_id": 1,
     },
-    'NLHQT(n=2)': {
-        "class": NLHQTAlgorithm, 
-        "config": {'n_way': 2},
-        "year": 23,
+    "LAPCT": {
+        "class": LAPCTAlgorithm,
+        "config": {"k_threshold_divisor": 3.0},
+        "display_name": "LAPCT",
+        "year": 2024,
         "style_id": 2,
     },
-    'NLHQT(n=1)': {
-        "class": NLHQTAlgorithm, 
-        "config": {'n_way': 1},
-        "year": 23,
-        "style_id": 3,
-    },
-    'DQTA(k_max=3)': {
-        "class": DQTAAlgorithm,
-        "config": {'k_max': 3},
-        "year": 19,
-        "style_id": 4,
-    },
-    'EMDT': {
+    "EMDT": {
         "class": EMDTAlgorithm,
         "config": {},
-        "year": 24,
-        "style_id": 5,
+        "display_name": "EMDT",
+        "year": 2024,
+        "style_id": 3,
     },
-    'EAQ_CBB': {
+    "DQTA": {
+        "class": DQTAAlgorithm,
+        "config": {"k_max": 3},
+        "display_name": "DQTA",
+        "year": 2019,
+        "style_id": 4,
+    },
+    "EAQ-CBB": {
         "class": EAQCBBAlgorithm,
         "config": {},
-        "year": 23,
+        "display_name": "EAQ-CBB",
+        "year": 2023,
+        "style_id": 5,
+    },
+    "NLHQT(n=2)": {
+        "class": NLHQTAlgorithm,
+        "config": {"n_way": 2},
+        "display_name": "NLHQT(n=2)",
+        "year": 2023,
         "style_id": 6,
-    },
-    'HT_EEAC': {
-        "class": HT_EEAC,
-        "config": {},
-        "year": 24,
-        "style_id": 7,
-    },
-    'FHS_RAC': {
-        "class": FHS_RAC,
-        "config": {},
-        "year": 21,
-        "style_id": 8,
-    },
-    'ICT': {
-        "class": ICT_Algorithm,
-        "config": {},
-        "year": 24,
-        "style_id": 7,
-    },
-    'SD-CGQT': {
-        "class": SDCGQTAlgorithm,
-        "config": {},
-        "year": 23,
-        "style_id": 8,
-    },
-    'SUBF-CGDFSA': {
-        "class": SUBF_CGDFSA_Algorithm,
-        "config": {},
-        "year": 24,
-        "style_id": 9,
     },
 }
 
-
+# Compatibility for retained runner code while exposing only the paper set.
+ALGORITHMS_TO_TEST = PAPER_ALGORITHMS

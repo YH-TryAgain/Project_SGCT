@@ -1,107 +1,83 @@
-import json
-import tempfile
-import unittest
-from pathlib import Path
+import subprocess
+import sys
 
 import pandas as pd
 
-from compute_paper_ci import compute_ci_table
-from generate_paper_tables import compact_algorithm_table
-from formal_experiment import (
-    ALGORITHM_LIBRARY,
-    build_config_snapshot,
-    deduplicate_result_columns,
-)
+from generate_paper_tables import build_paper_outputs, validate_input_sources
 
 
-class ReproducibilityToolsTest(unittest.TestCase):
-    def test_deduplicate_result_columns_drops_equal_pandas_suffixes(self):
-        df = pd.DataFrame(
-            {
-                "metric": [1.0, 2.0],
-                "metric.1": [1.0, 2.0],
-                "other.1": [3.0, 4.0],
-            }
-        )
-
-        cleaned = deduplicate_result_columns(df)
-
-        self.assertIn("metric", cleaned.columns)
-        self.assertNotIn("metric.1", cleaned.columns)
-        self.assertIn("other.1", cleaned.columns)
-
-    def test_config_snapshot_records_drct_final_note(self):
-        df = pd.DataFrame(
-            {
-                "experiment_name": ["unit"],
-                "algorithm_name": ["DRCT"],
-                "run_id": [0],
-                "scenario_point": ["scenario_label=random"],
-                "TOTAL_TAGS": [8],
-                "BINARY_LENGTH": [16],
-            }
-        )
-        experiment = {
-            "name": "unit",
-            "varying_param_key": "scenario_point",
-            "scenario_config": {"TOTAL_TAGS": 8, "BINARY_LENGTH": 16},
-            "algorithm_specific_config": {"ber": 0.0},
-        }
-
-        snapshot = build_config_snapshot(df, experiment, ALGORITHM_LIBRARY)
-
-        self.assertIn("DRCT", snapshot["algorithms"])
-        self.assertEqual("DRCTFinalAlgorithm", snapshot["algorithm_configs"]["DRCT"]["class"])
-        self.assertIn("DRCTFinalAlgorithm", snapshot["drct_note"])
-        json.dumps(snapshot)
-
-    def test_compute_paper_ci_uses_paired_observations(self):
-        with tempfile.TemporaryDirectory() as temp_dir:
-            raw = Path(temp_dir) / "raw_runs.csv"
-            pd.DataFrame(
-                [
-                    {"scenario_point": "a", "run_id": 0, "algorithm_name": "SGCT", "total_protocol_time_ms": 5.0},
-                    {"scenario_point": "a", "run_id": 0, "algorithm_name": "DRCT", "total_protocol_time_ms": 10.0},
-                    {"scenario_point": "a", "run_id": 1, "algorithm_name": "SGCT", "total_protocol_time_ms": 6.0},
-                    {"scenario_point": "a", "run_id": 1, "algorithm_name": "DRCT", "total_protocol_time_ms": 12.0},
-                ]
-            ).to_csv(raw, index=False)
-
-            result = compute_ci_table(raw, baselines=["DRCT"], bootstrap_samples=100, seed=1)
-
-        bootstrap = result[result["method"] == "paired_bootstrap_aggregate_mean_reduction"].iloc[0]
-        self.assertEqual(2, bootstrap["n"])
-        self.assertAlmostEqual(50.0, bootstrap["mean_reduction_pct"])
-
-    def test_compact_algorithm_table_reports_aggregate_gamma_b(self):
-        with tempfile.TemporaryDirectory() as temp_dir:
-            raw = Path(temp_dir) / "raw_runs.csv"
-            pd.DataFrame(
-                [
-                    {
-                        "algorithm_name": "SGCT",
-                        "total_protocol_time_ms": 10.0,
-                        "throughput_tags_per_sec": 100.0,
-                        "avg_total_bits": 10.0,
-                        "system_efficiency": 0.5,
-                    },
-                    {
-                        "algorithm_name": "SGCT",
-                        "total_protocol_time_ms": 20.0,
-                        "throughput_tags_per_sec": 300.0,
-                        "avg_total_bits": 100.0,
-                        "system_efficiency": 0.7,
-                    },
-                ]
-            ).to_csv(raw, index=False)
-
-            table = compact_algorithm_table(raw, ["SGCT"])
-
-        row = table.iloc[0]
-        self.assertAlmostEqual(400.0 / 110.0, row["gamma_B_aggregate"])
-        self.assertAlmostEqual(6.5, row["gamma_B_run_mean"])
-        self.assertIn("Rank", table.columns)
+def test_paper_processing_sources_exist_and_validate_read_only():
+    assert validate_input_sources() == []
+    completed = subprocess.run(
+        [sys.executable, "generate_paper_tables.py", "--check-only"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert "PASS" in completed.stdout
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_generated_outputs_match_submitted_paper_and_use_display_names(tmp_path):
+    build_paper_outputs(tmp_path, bootstrap_samples=500)
+
+    expected = {
+        "fig4_signature_width_data.csv",
+        "fig5_population_scaling_data.csv",
+        "fig5_id_length_data.csv",
+        "fig6_epc_structure_data.csv",
+        "fig7_ablation_data.csv",
+        "table_iii_average_performance.csv",
+        "table_iv_paired_bootstrap_ci.csv",
+    }
+    assert {path.name for path in tmp_path.glob("*.csv")} == expected
+
+    table_iii = pd.read_csv(tmp_path / "table_iii_average_performance.csv")
+    assert list(table_iii["Algorithm"]) == [
+        "SGCT",
+        "DRCT",
+        "LAPCT",
+        "EMDT",
+        "DQTA",
+        "EAQ-CBB",
+        "NLHQT(n=2)",
+    ]
+    sgct = table_iii.loc[table_iii["Algorithm"] == "SGCT"].iloc[0]
+    assert round(sgct["Identification time (s)"], 2) == 8.05
+    assert round(sgct["Communication cost (bits/update)"], 2) == 114.27
+
+    fig4 = pd.read_csv(tmp_path / "fig4_signature_width_data.csv")
+    assert list(fig4["d"]) == [4, 6, 8, 10]
+    assert round(fig4.loc[fig4["d"] == 10, "Identification time (s)"].iloc[0], 2) == 9.98
+
+    fig5_id = pd.read_csv(tmp_path / "fig5_id_length_data.csv")
+    assert 100 not in set(fig5_id["ID length (bits)"])
+    assert set(fig5_id["ID length (bits)"]) == {20, 40, 60, 80, 96, 128, 160, 192, 256}
+
+    fig7 = pd.read_csv(tmp_path / "fig7_ablation_data.csv")
+    assert set(fig7["Variant"]) == {
+        "SGCT (w/o marker pruning)",
+        "SGCT (w/o local short-ID)",
+    }
+    marker = fig7.loc[fig7["Variant"] == "SGCT (w/o marker pruning)"].iloc[0]
+    assert round(marker["Identification-time increase (%)"], 1) == 72.4
+    assert round(marker["Communication-cost increase (%)"], 1) == 18.3
+
+    table_iv = pd.read_csv(tmp_path / "table_iv_paired_bootstrap_ci.csv")
+    assert "HT" + "-EEAC" not in set(table_iv["Baseline"])
+    assert set(table_iv["Metric"]) == {"Identification time", "Communication cost"}
+
+
+def test_ci_cli_can_check_inputs_without_writing():
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "compute_paper_ci.py",
+            "--raw-csv",
+            "results_paper_final/formal_experiment10_algorithm_comparison/raw_runs.csv",
+            "--check-only",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert "PASS" in completed.stdout

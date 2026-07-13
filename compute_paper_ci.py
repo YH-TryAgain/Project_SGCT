@@ -113,7 +113,14 @@ def bootstrap_aggregate_reduction_ci(
 def compute_ci_table(
     raw_csv: Path,
     candidate: str = "SGCT",
-    baselines: Iterable[str] = ("DRCT", "LAPCT", "DQTA(k_max=3)", "EMDT", "NLHQT(n=2)"),
+    baselines: Iterable[str] = (
+        "DRCT",
+        "LAPCT",
+        "EMDT",
+        "DQTA(k_max=3)",
+        "EAQ_CBB",
+        "NLHQT(n=2)",
+    ),
     metric: str = "total_protocol_time_ms",
     bootstrap_samples: int = 10000,
     seed: int = 20260601,
@@ -152,9 +159,21 @@ def main() -> None:
     parser.add_argument("--bootstrap-samples", type=int, default=10000)
     parser.add_argument("--seed", type=int, default=20260601)
     parser.add_argument("--output", type=Path, default=None)
+    parser.add_argument(
+        "--check-only",
+        action="store_true",
+        help="Validate the input and paired observations without writing output.",
+    )
     args = parser.parse_args()
 
-    baselines = args.baseline or ["DRCT", "LAPCT", "DQTA(k_max=3)", "EMDT", "NLHQT(n=2)"]
+    baselines = args.baseline or [
+        "DRCT",
+        "LAPCT",
+        "EMDT",
+        "DQTA(k_max=3)",
+        "EAQ_CBB",
+        "NLHQT(n=2)",
+    ]
     table = compute_ci_table(
         raw_csv=args.raw_csv,
         candidate=args.candidate,
@@ -163,6 +182,12 @@ def main() -> None:
         bootstrap_samples=args.bootstrap_samples,
         seed=args.seed,
     )
+    if args.check_only:
+        if table.empty:
+            print("FAIL: no paired observations were found.")
+            raise SystemExit(1)
+        print(f"PASS: {len(table)} paired confidence-interval rows are available.")
+        return
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         table.to_csv(args.output, index=False, encoding="utf-8-sig", float_format="%.6f")
