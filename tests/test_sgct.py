@@ -232,10 +232,11 @@ class SGCTAlgorithmTests(unittest.TestCase):
         self.assertIn("SGCT", ALGORITHM_LIBRARY)
         self.assertIs(SGCTAlgorithm, ALGORITHM_LIBRARY["SGCT"]["class"])
 
-    def test_algorithm_library_uses_adaptive_suffix_signature_defaults(self):
+    def test_algorithm_library_disables_suffix_signature_for_paper_config(self):
         config = ALGORITHM_LIBRARY["SGCT"]["config"]
 
-        self.assertTrue(config["enable_adaptive_suffix_signature"])
+        self.assertFalse(config["enable_suffix_signature"])
+        self.assertFalse(config["enable_adaptive_suffix_signature"])
         self.assertEqual(12, config["suffix_signature_d_max"])
         self.assertEqual(0.35, config["suffix_signature_max_non_idle_ratio"])
         self.assertEqual(1, config["max_suffix_signature_trials_per_node"])
@@ -310,6 +311,7 @@ class SGCTAlgorithmTests(unittest.TestCase):
         tags = [Tag("0" * 80 + format(i << 4, "016b")) for i in range(256)]
         algorithm = SGCTAlgorithm(
             tags,
+            enable_suffix_signature=True,
             suffix_signature_d_max=12,
             suffix_signature_slot_cap=4096,
             signature_slot_cap=256,
@@ -347,7 +349,11 @@ class SGCTAlgorithmTests(unittest.TestCase):
             for rep in range(2)
             for slot in range(4096)
         ]
-        algorithm = SGCTAlgorithm(tags)
+        algorithm = SGCTAlgorithm(
+            tags,
+            enable_suffix_signature=True,
+            enable_adaptive_suffix_signature=True,
+        )
         algorithm.current_node = SGCTNode(tags=tags, depth=1, last_idle_ratio=0.0)
 
         self.assertFalse(algorithm._should_use_suffix_signature("0" * 64, tags))
@@ -357,7 +363,14 @@ class SGCTAlgorithmTests(unittest.TestCase):
             Tag("0" * 64 + format(i, "032b"))
             for i in range(512)
         ]
-        result = run_simulation_with_tags(tags, SGCTAlgorithm, {})
+        result = run_simulation_with_tags(
+            tags,
+            SGCTAlgorithm,
+            {
+                "enable_suffix_signature": True,
+                "enable_adaptive_suffix_signature": True,
+            },
+        )
         no_suffix_result = run_simulation_with_tags(
             tags,
             SGCTAlgorithm,
@@ -374,7 +387,14 @@ class SGCTAlgorithmTests(unittest.TestCase):
             for bucket in range(16)
             for tail in range(32)
         ]
-        result = run_simulation_with_tags(tags, SGCTAlgorithm, {})
+        result = run_simulation_with_tags(
+            tags,
+            SGCTAlgorithm,
+            {
+                "enable_suffix_signature": True,
+                "enable_adaptive_suffix_signature": True,
+            },
+        )
 
         self.assertEqual(512, result["identified_tags_count"])
         self.assertGreater(result["suffix_signature_trigger_count"], 0)

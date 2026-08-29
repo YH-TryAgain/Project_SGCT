@@ -4,6 +4,12 @@ The submitted results are already present in `results_paper_final/`. Verificatio
 and manuscript-data extraction are read-only; a full rerun is optional and may
 require substantial computation.
 
+The optional suffix-signature implementation is retained for future experiments
+but disabled in the JRFID paper-facing configuration because it made zero
+recorded contribution to the retained paper results. Reproductions should leave
+both `enable_suffix_signature` and `enable_adaptive_suffix_signature` set to
+`False`.
+
 ## Paper-to-result mapping
 
 | Paper item | Experiment/config | Existing result directory | Processing script |

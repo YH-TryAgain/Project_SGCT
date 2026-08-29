@@ -1,9 +1,9 @@
 # SGCT: Sparse-Grouping Collision Tree
 
 This repository contains the protocol-level simulation code and immutable result
-files for the submitted IEEE Sensors Journal manuscript **“Tag Identification
-Protocol Based on Sparse Collision Signatures for Large-Scale Battery-Less RFID
-Sensor Systems.”**
+files for the manuscript **“A Sparse-Grouping Collision Tree Protocol for
+Large-Scale RFID Tag Identification,”** prepared for submission to the IEEE
+Journal of Radio Frequency Identification (JRFID).
 
 ## Overview
 
@@ -31,6 +31,10 @@ The paper-facing registry contains exactly seven protocols:
 
 Historical names present inside immutable CSV files are translated only when data
 are displayed. The CSV files themselves are never rewritten.
+
+The optional suffix-signature implementation is retained for future experiments
+but disabled in the JRFID paper-facing configuration because it made zero
+recorded contribution to the retained paper results.
 
 ## Repository structure
 

@@ -34,8 +34,8 @@ class SGCTParams:
     enable_hash_short_id: bool = False
     hash_short_id_bits: int = 8
     hash_short_id_max_bits: int = 16
-    enable_suffix_signature: bool = True
-    enable_adaptive_suffix_signature: bool = True
+    enable_suffix_signature: bool = False
+    enable_adaptive_suffix_signature: bool = False
     suffix_signature_root_only: bool = True
     suffix_signature_min_prefix_bits: int = 64
     suffix_signature_max_remaining_bits: int = 32
@@ -95,8 +95,8 @@ class SGCTAlgorithm(TraditionalAlgorithmInterface):
             enable_hash_short_id=kwargs.get("enable_hash_short_id", False),
             hash_short_id_bits=kwargs.get("hash_short_id_bits", 8),
             hash_short_id_max_bits=kwargs.get("hash_short_id_max_bits", 16),
-            enable_suffix_signature=kwargs.get("enable_suffix_signature", True),
-            enable_adaptive_suffix_signature=kwargs.get("enable_adaptive_suffix_signature", True),
+            enable_suffix_signature=kwargs.get("enable_suffix_signature", False),
+            enable_adaptive_suffix_signature=kwargs.get("enable_adaptive_suffix_signature", False),
             suffix_signature_root_only=kwargs.get("suffix_signature_root_only", True),
             suffix_signature_min_prefix_bits=kwargs.get("suffix_signature_min_prefix_bits", 64),
             suffix_signature_max_remaining_bits=kwargs.get("suffix_signature_max_remaining_bits", 32),
